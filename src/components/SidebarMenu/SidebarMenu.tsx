@@ -16,7 +16,6 @@ export const SidebarMenu: React.FC<{
   useEffect(() => {
     if (open) document.body.style.overflow = 'hidden';
     else document.body.style.overflow = '';
-    // return () => (document.body.style.overflow = '');
   }, [open]);
 
   return (
@@ -33,7 +32,7 @@ export const SidebarMenu: React.FC<{
         <nav>
           <ul className={styles.list}>
             {items.map(item => (
-              <MenuNode key={item.id} item={item} />
+              <MenuNode key={item.id} item={item} onClose={onClose} />
             ))}
           </ul>
         </nav>
@@ -42,8 +41,13 @@ export const SidebarMenu: React.FC<{
   );
 };
 
-const MenuNode: React.FC<{ item: MenuItem }> = ({ item }) => {
+
+const MenuNode: React.FC<{ item: MenuItem; onClose: () => void }> = ({
+  item,
+  onClose,
+}) => {
   const [expanded, setExpanded] = React.useState(false);
+
   return (
     <li className={styles.item}>
       <div className={styles.labelRow}>
@@ -52,10 +56,12 @@ const MenuNode: React.FC<{ item: MenuItem }> = ({ item }) => {
           onClick={() => {
             item.onClick?.();
             if (item.children) setExpanded(s => !s);
+            else onClose(); // закрыть сайдбар при выборе пункта
           }}
         >
           {item.label}
         </button>
+
         {item.children && (
           <button
             aria-label={expanded ? 'Collapse' : 'Expand'}
@@ -66,11 +72,18 @@ const MenuNode: React.FC<{ item: MenuItem }> = ({ item }) => {
           </button>
         )}
       </div>
+
       {item.children && expanded && (
         <ul className={styles.sublist}>
           {item.children.map(c => (
             <li key={c.id} className={styles.subitem}>
-              <button className={styles.link} onClick={c.onClick}>
+              <button
+                className={styles.link}
+                onClick={() => {
+                  c.onClick?.();
+                  onClose(); 
+                }}
+              >
                 {c.label}
               </button>
             </li>

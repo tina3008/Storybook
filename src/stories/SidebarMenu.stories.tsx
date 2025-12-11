@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Meta } from '@storybook/react';
 import { SidebarMenu, MenuItem } from '../components/SidebarMenu/SidebarMenu';
-import styles from './button.css'
+import './button.css';
 export default {
   title: 'Navigation / SidebarMenu',
   component: SidebarMenu,
@@ -17,7 +17,7 @@ const items: MenuItem[] = [
       { id: '2-2', label: 'Popular' },
     ],
   },
-  { id: '3', label: 'About' },
+  { id: '3', label: 'About', onClick: () => alert('About') },
 ];
 
 export const OneLevel = () => {
@@ -25,11 +25,12 @@ export const OneLevel = () => {
   return (
     <>
       <button
-        onClick={() => setOpen(true)}
+        onClick={() => setOpen(true)} 
         className='button'
       >
         Open sidebar
       </button>
+
       <SidebarMenu open={open} onClose={() => setOpen(false)} items={items} />
     </>
   );
@@ -50,7 +51,7 @@ export const TwoLevel = () => {
           id: 'b-2',
           label: 'Security',
           children: [
-            { id: 'b-2-1', label: '2FA' }, // You can adjust component to support deeper nesting if needed
+            { id: 'b-2-1', label: '2FA' }, 
           ],
         },
       ],
@@ -60,7 +61,9 @@ export const TwoLevel = () => {
   const [open, setOpen] = useState(true);
   return (
     <>
-      <button onClick={() => setOpen(true)}>Open</button>
+      <button onClick={() => setOpen(true)} className="button">
+        Open
+      </button>
       <SidebarMenu open={open} onClose={() => setOpen(false)} items={nested} />
     </>
   );
