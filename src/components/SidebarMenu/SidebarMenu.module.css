@@ -1,0 +1,36 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  pointer-events: none;
+  transition: background 200ms ease;
+  z-index: 999;
+}
+.backdrop.show {
+  background: rgba(0,0,0,0.35);
+  pointer-events: auto;
+}
+
+.panel {
+  position: fixed;
+  top: 0;
+  right: -360px;
+  width: 320px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -8px 0 24px rgba(0,0,0,0.12);
+  z-index: 1000;
+  padding: 20px;
+  transition: right 220ms ease;
+  display:flex;
+  flex-direction:column;
+}
+.panel.open { right: 0; }
+
+.list { list-style: none; margin: 0; padding: 0; }
+.item { margin-bottom: 8px; }
+.labelRow { display:flex; align-items:center; justify-content:space-between; }
+.link { background: transparent; border: none; text-align: left; padding: 8px; width:100%; cursor:pointer; font-size:16px; }
+.chev { background: transparent; border: none; cursor: pointer; padding: 8px; }
+.sublist { list-style: none; padding-left: 12px; margin: 4px 0; }
+.subitem { margin-bottom: 6px; }

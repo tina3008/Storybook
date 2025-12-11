@@ -1,0 +1,26 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.input {
+  padding: 8px 36px 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+.iconButton, .clearButton {
+  position: absolute;
+  right: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+}
+.iconButton {
+  right: 28px; 
+}
+.clearButton {
+  right: 6px;
+}
