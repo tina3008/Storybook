@@ -20,6 +20,10 @@ const config: StorybookConfig = {
   docs: {
     defaultName: 'Docs',
   },
+  async viteFinal(config) {
+    config.base = '/Storybook/'; 
+    return config;
+  },
 };
 
 export default config;
