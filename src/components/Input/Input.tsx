@@ -39,7 +39,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         />
         {type === 'password' && (
           <button
-            aria-label={showPwd ? 'Hide password' : 'Show password'}
             className={styles.iconButton}
             onClick={() => setShowPwd(s => !s)}
             type="button"
@@ -52,8 +51,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           </button>
         )}
         {clearable && (
-          <button
-            aria-label="Clear"
+          <button     
             className={styles.clearButton}
             onClick={handleClear}
             type="button"
