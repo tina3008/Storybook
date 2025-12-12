@@ -24,7 +24,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           : null;
       if (input) {
         input.value = '';
-        const ev = new Event('input', { bubbles: true });
+        const ev = new Event('input');
         input.dispatchEvent(ev);
       }
     };
